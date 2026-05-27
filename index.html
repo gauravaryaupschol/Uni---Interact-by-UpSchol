@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="color-scheme" content="light">
-    <meta name="supported-color-schemes" content="light">
+    <meta name="color-scheme" content="light dark">
+    <meta name="supported-color-schemes" content="light dark">
     <style>
-        /* Forcing Apple Mail to stay light */
         :root {
-            color-scheme: light;
-            supported-color-schemes: light;
+            color-scheme: light dark;
+            supported-color-schemes: light dark;
         }
         body, table, td, a {
             -webkit-text-size-adjust: 100%;
@@ -21,31 +20,85 @@
             outline: none;
             text-decoration: none;
         }
+        
+        /* HIDDEN BY DEFAULT (For dark mode white logo) */
+        .dark-img {
+            display: none !important;
+            mso-hide: all !important;
+        }
+
+        /* --- SMART DARK MODE STYLES --- */
+        @media (prefers-color-scheme: dark) {
+            /* Main Backgrounds */
+            .email-bg {
+                background-color: #1a1a1a !important;
+            }
+            /* Main Text */
+            .email-text, .email-text td, .email-text span, .email-text div, .email-text li {
+                color: #f1f1f1 !important;
+            }
+            /* Titles */
+            .email-title {
+                color: #ffffff !important;
+            }
+            
+            /* PREMIUM YELLOW BOXES FOR DARK MODE */
+            .yellow-box {
+                background-color: #2a2a2a !important;
+                color: #f1f1f1 !important;
+                border: 1px solid #FFD700 !important;
+            }
+            
+            /* LOGO SWAP: Hide Black Logo, Show White Logo */
+            .light-img {
+                display: none !important;
+                mso-hide: all !important;
+            }
+            .dark-img {
+                display: block !important;
+                width: auto !important;
+                height: 100px !important;
+                max-height: 100px !important;
+                visibility: visible !important;
+            }
+        }
     </style>
     <title>Uni-Interact Career Fair</title>
 </head>
 <body style="font-family: Arial, sans-serif; background-color: #555555; margin: 0; padding: 20px;">
 
-    <!-- MAIN EMAIL CONTAINER (Anti-Dark Mode Gradient Hack) -->
-    <table align="center" width="600" cellpadding="0" cellspacing="0" style="max-width: 600px; width: 100%; box-shadow: 0 4px 8px rgba(0,0,0,0.2); margin: 0 auto; background-color: #ffffff; background-image: linear-gradient(#ffffff, #ffffff);">
+    <!-- MAIN EMAIL CONTAINER -->
+    <table class="email-bg" align="center" width="600" bgcolor="#ffffff" cellpadding="0" cellspacing="0" style="max-width: 600px; width: 100%; box-shadow: 0 4px 8px rgba(0,0,0,0.5); margin: 0 auto;">
         <tr>
-            <td style="padding: 30px;">
+            <td class="email-bg" bgcolor="#ffffff" style="padding: 30px;">
                 
-                <!-- LOGOS (Zero-Shift display block applied) -->
+                <!-- LOGOS (With Swap Feature) -->
                 <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom: 15px;">
                     <tr>
                         <td align="left" valign="middle">
-                            <img src="https://raw.githubusercontent.com/gauravaryaupschol/Uni---Interact-by-UpSchol/refs/heads/main/uni.png" alt="Uni Interact Logo" height="100" style="display: block; height: 100px; width: auto; color: #333333;">
+                            
+                            <!-- LIGHT MODE LOGO (Black text) -->
+                            <img class="light-img" src="https://cdn.jsdelivr.net/gh/gauravaryaupschol/Uni---Interact-by-UpSchol@main/uni.png" alt="Uni Interact Logo" height="100" width="auto" style="display: block; height: 100px; max-height: 100px;">
+                            
+                            <!-- DARK MODE LOGO (White text) - Hidden by default -->
+                            <!--[if !mso]><! -->
+                            <div class="dark-img" style="display:none; overflow:hidden; width:0px; max-height:0px; max-width:0px; line-height:0px; visibility:hidden;">
+                                <!-- YAHAN WHITE WALE LOGO KA LINK DAALNA -->
+                                <img src="YOUR_WHITE_LOGO_LINK_HERE.png" alt="Uni Interact Logo White" height="100" width="auto" style="display: block; height: 100px; max-height: 100px; border: 0;">
+                            </div>
+                            <!--<![endif]-->
+
                         </td>
                         <td align="right" valign="middle">
-                            <img src="https://raw.githubusercontent.com/gauravaryaupschol/Uni---Interact-by-UpSchol/refs/heads/main/logo.png" alt="UpSchol Logo" height="100" style="display: block; height: 100px; width: auto; color: #333333;">
+                            <!-- UpSchol Logo -->
+                            <img src="https://cdn.jsdelivr.net/gh/gauravaryaupschol/Uni---Interact-by-UpSchol@main/logo.png" alt="UpSchol Logo" height="100" width="auto" style="display: block; height: 100px; max-height: 100px;">
                         </td>
                     </tr>
                 </table>
 
                 <!-- HEADERS -->
-                <div style="text-align: center; font-size: 22px; font-weight: bold; margin-bottom: 5px;">
-                   <span style="color:#F47920;">Uni</span> <span style="color:#000000;">- Interact by</span> <span style="color:#800080;">UpSchol </span> <span style="color:#000000;">presents</span>
+                <div class="email-title" style="text-align: center; font-size: 22px; font-weight: bold; margin-bottom: 5px; color: #000000;">
+                   <span style="color:#F47920;">Uni</span> - Interact by <span style="color:#800080;">UpSchol </span> presents
                 </div>
                 <div style="text-align: center; color: #800080; font-size: 13px; font-weight: bold; margin-bottom: 15px;">
                     Career & Scholarships Fair 2025-26
@@ -53,7 +106,7 @@
                 
                 <hr style="border: 0; border-top: 1px solid #F47920; margin-bottom: 15px;">
                 
-                <div style="text-align: justify; font-size: 11px; line-height: 1.4; margin-bottom: 25px; color: #333333;">
+                <div class="email-text" style="text-align: justify; font-size: 11px; line-height: 1.4; margin-bottom: 25px; color: #333333;">
                     An exclusive platform where students meet Top University Representatives from India & abroad all in one place, in minimal time.<br>
                     Over 5000+ students counselled for master's programs.
                 </div>
@@ -63,7 +116,7 @@
                     <tr>
                         <td width="48%" valign="top">
                             <div style="color: #F47920; font-size: 13px; font-weight: bold; margin-bottom: 8px;">Students Can Explore</div>
-                            <div style="font-size: 11px; color: #333333; line-height: 1.6;">
+                            <div class="email-text" style="font-size: 11px; color: #333333; line-height: 1.6;">
                                 <span style="color:#1976d2; font-size: 10px;">&#9632;</span> Scholarships & Financial Aid<br>
                                 <span style="color:#1976d2; font-size: 10px;">&#9632;</span> Education Loans<br>
                                 <span style="color:#1976d2; font-size: 10px;">&#9632;</span> Multidisciplinary Programmes<br>
@@ -75,7 +128,7 @@
                         <td width="4%"></td> <!-- Gutter -->
                         <td width="48%" valign="top">
                             <div style="color: #F47920; font-size: 13px; font-weight: bold; margin-bottom: 8px;">Objectives</div>
-                            <div style="font-size: 11px; color: #333333; line-height: 1.6;">
+                            <div class="email-text" style="font-size: 11px; color: #333333; line-height: 1.6;">
                                 <span style="color:#1976d2; font-size: 10px;">&#9632;</span> Introduce students to career paths aligned with their coursework<br>
                                 <span style="color:#1976d2; font-size: 10px;">&#9632;</span> One-on-one interaction with university reps<br>
                                 <span style="color:#1976d2; font-size: 10px;">&#9632;</span> Guidance by experienced career counsellors<br>
@@ -88,8 +141,8 @@
 
                 <div style="color: #F47920; font-size: 13px; font-weight: bold; margin-bottom: 8px;">Everyone Benefits</div>
                 
-                <!-- YELLOW BANNER (Anti-Dark Mode Hack) -->
-                <table width="100%" cellpadding="12" cellspacing="0" style="margin-bottom: 25px; font-size: 11px; color: #333333; background-color: #FFD700; background-image: linear-gradient(#FFD700, #FFD700);">
+                <!-- YELLOW BANNER (Turns Dark Grey with Yellow border in Dark Mode) -->
+                <table class="yellow-box" width="100%" bgcolor="#FFD700" cellpadding="12" cellspacing="0" style="margin-bottom: 25px; font-size: 11px; color: #111111; border: 1px solid transparent;">
                     <tr>
                         <td width="50%" valign="top">
                             <strong>Students:</strong> Meet potential universities & explore futures
@@ -108,10 +161,10 @@
                     </tr>
                 </table>
                 
-                <div style="text-align: center; font-size: 15px; font-weight: bold; margin-bottom: 15px; border-top: 2px solid #F47920; padding-top: 15px; color: #333333;">Partner Universities</div>
+                <div class="email-title" style="text-align: center; font-size: 15px; font-weight: bold; margin-bottom: 15px; border-top: 2px solid #F47920; padding-top: 15px; color: #000000;">Partner Universities</div>
                 
-                <!-- BANNER IMAGE (Zero-Shift Applied) -->
-                <img src="https://raw.githubusercontent.com/gauravaryaupschol/Uni---Interact-by-UpSchol/refs/heads/main/univ.png" alt="Partner Universities Showcase" width="540" height="200" style="display: block; width: 100%; max-width: 540px; height: auto; margin-bottom: 20px; color: #333333;">
+                <!-- MAIN BANNER IMAGE -->
+                <img src="https://cdn.jsdelivr.net/gh/gauravaryaupschol/Uni---Interact-by-UpSchol@main/univ.png" alt="Partner Universities Showcase" style="display: block; width: 100%; max-width: 540px; height: auto; margin-bottom: 20px;">
 
                 <!-- 2 COLUMN: PARTNER UNIVERSITIES GRID -->
                 <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom: 20px;">
@@ -121,8 +174,8 @@
                             
                             <!-- Australia -->
                             <table width="100%" cellpadding="0" cellspacing="0" style="border: 1px solid #cccccc; margin-bottom: 10px;">
-                                <tr><td align="center" style="color: #ffffff; font-weight: bold; font-size: 11px; padding: 4px; background-color: #F47920; background-image: linear-gradient(#F47920, #F47920);">Australia</td></tr>
-                                <tr><td style="padding: 10px; font-size: 9px; color: #333333; line-height: 1.4; background-color: #FFD700; background-image: linear-gradient(#FFD700, #FFD700);">
+                                <tr><td bgcolor="#F47920" align="center" style="color: #ffffff; font-weight: bold; font-size: 11px; padding: 4px;">Australia</td></tr>
+                                <tr><td class="yellow-box" bgcolor="#FFD700" style="padding: 10px; font-size: 9px; color: #111111; line-height: 1.4; border: 1px solid transparent;">
                                     <ul style="margin: 0; padding-left: 15px;">
                                         <li>University of Melbourne</li>
                                         <li>Australian National University</li>
@@ -138,8 +191,8 @@
 
                             <!-- USA -->
                             <table width="100%" cellpadding="0" cellspacing="0" style="border: 1px solid #cccccc; margin-bottom: 10px;">
-                                <tr><td align="center" style="color: #ffffff; font-weight: bold; font-size: 11px; padding: 4px; background-color: #F47920; background-image: linear-gradient(#F47920, #F47920);">USA</td></tr>
-                                <tr><td style="padding: 10px; font-size: 9px; color: #333333; line-height: 1.4; background-color: #FFD700; background-image: linear-gradient(#FFD700, #FFD700);">
+                                <tr><td bgcolor="#F47920" align="center" style="color: #ffffff; font-weight: bold; font-size: 11px; padding: 4px;">USA</td></tr>
+                                <tr><td class="yellow-box" bgcolor="#FFD700" style="padding: 10px; font-size: 9px; color: #111111; line-height: 1.4; border: 1px solid transparent;">
                                     <ul style="margin: 0; padding-left: 15px;">
                                         <li>Marquette University</li>
                                         <li>The Culinary Institute of America</li>
@@ -153,12 +206,12 @@
 
                             <!-- Others -->
                             <table width="100%" cellpadding="0" cellspacing="0" style="border: 1px solid #cccccc; margin-bottom: 10px;">
-                                <tr><td align="center" style="color: #ffffff; font-weight: bold; font-size: 11px; padding: 4px; background-color: #F47920; background-image: linear-gradient(#F47920, #F47920);">Others</td></tr>
-                                <tr><td style="padding: 10px; font-size: 9px; color: #333333; line-height: 1.4; background-color: #FFD700; background-image: linear-gradient(#FFD700, #FFD700);">
+                                <tr><td bgcolor="#F47920" align="center" style="color: #ffffff; font-weight: bold; font-size: 11px; padding: 4px;">Others</td></tr>
+                                <tr><td class="yellow-box" bgcolor="#FFD700" style="padding: 10px; font-size: 9px; color: #111111; line-height: 1.4; border: 1px solid transparent;">
                                     <ul style="margin: 0; padding-left: 15px;">
                                         <li>Tokyo International University (Japan)</li>
                                         <li>National University of Ireland Galway</li>
-                                        <li>Emirates Academy of Hospitality Management (Dubai)</li>
+                                        <li>Emirates Academy of Hospitality Management</li>
                                         <li>St. George's University (Grenada)</li>
                                         <li>ESSEC Business School (Singapore/Paris)</li>
                                         <li>IE University (Spain)</li>
@@ -175,8 +228,8 @@
                             
                             <!-- Canada -->
                             <table width="100%" cellpadding="0" cellspacing="0" style="border: 1px solid #cccccc; margin-bottom: 10px;">
-                                <tr><td align="center" style="color: #ffffff; font-weight: bold; font-size: 11px; padding: 4px; background-color: #F47920; background-image: linear-gradient(#F47920, #F47920);">Canada</td></tr>
-                                <tr><td style="padding: 10px; font-size: 9px; color: #333333; line-height: 1.4; background-color: #FFD700; background-image: linear-gradient(#FFD700, #FFD700);">
+                                <tr><td bgcolor="#F47920" align="center" style="color: #ffffff; font-weight: bold; font-size: 11px; padding: 4px;">Canada</td></tr>
+                                <tr><td class="yellow-box" bgcolor="#FFD700" style="padding: 10px; font-size: 9px; color: #111111; line-height: 1.4; border: 1px solid transparent;">
                                     <ul style="margin: 0; padding-left: 15px;">
                                         <li>University of Alberta</li>
                                         <li>University of Victoria</li>
@@ -197,8 +250,8 @@
 
                             <!-- UK -->
                             <table width="100%" cellpadding="0" cellspacing="0" style="border: 1px solid #cccccc; margin-bottom: 10px;">
-                                <tr><td align="center" style="color: #ffffff; font-weight: bold; font-size: 11px; padding: 4px; background-color: #F47920; background-image: linear-gradient(#F47920, #F47920);">UK</td></tr>
-                                <tr><td style="padding: 10px; font-size: 9px; color: #333333; line-height: 1.4; background-color: #FFD700; background-image: linear-gradient(#FFD700, #FFD700);">
+                                <tr><td bgcolor="#F47920" align="center" style="color: #ffffff; font-weight: bold; font-size: 11px; padding: 4px;">UK</td></tr>
+                                <tr><td class="yellow-box" bgcolor="#FFD700" style="padding: 10px; font-size: 9px; color: #111111; line-height: 1.4; border: 1px solid transparent;">
                                     <ul style="margin: 0; padding-left: 15px;">
                                         <li>Durham University</li>
                                         <li>University of Bath</li>
@@ -217,12 +270,11 @@
 
                             <!-- Domestic -->
                             <table width="100%" cellpadding="0" cellspacing="0" style="border: 1px solid #cccccc; margin-bottom: 10px;">
-                                <tr><td align="center" style="color: #ffffff; font-weight: bold; font-size: 11px; padding: 4px; background-color: #F47920; background-image: linear-gradient(#F47920, #F47920);">Domestic</td></tr>
-                                <tr><td style="padding: 10px; font-size: 9px; color: #333333; background-color: #FFD700; background-image: linear-gradient(#FFD700, #FFD700);">
-                                    <!-- Nested 2 column for domestic list to save space -->
+                                <tr><td bgcolor="#F47920" align="center" style="color: #ffffff; font-weight: bold; font-size: 11px; padding: 4px;">Domestic</td></tr>
+                                <tr><td class="yellow-box" bgcolor="#FFD700" style="padding: 10px; font-size: 9px; color: #111111; border: 1px solid transparent;">
                                     <table width="100%" cellpadding="0" cellspacing="0">
                                         <tr>
-                                            <td width="50%" valign="top" style="line-height: 1.4; color: #333333;">
+                                            <td class="email-text" width="50%" valign="top" style="line-height: 1.4; color: #111111;">
                                                 Ahmedabad University<br>
                                                 Alliance University<br>
                                                 Amity University<br>
@@ -246,7 +298,7 @@
                                                 Unitedworld Institute Of Design<br>
                                                 Universal Business School
                                             </td>
-                                            <td width="50%" valign="top" style="line-height: 1.4; color: #333333;">
+                                            <td class="email-text" width="50%" valign="top" style="line-height: 1.4; color: #111111;">
                                                 Great Learning<br>
                                                 IILM University<br>
                                                 Indian School of Hospitality<br>
@@ -279,17 +331,17 @@
                     <tr>
                         <td width="48%" valign="top">
                             <div style="color: #F47920; font-size: 13px; font-weight: bold; margin-bottom: 8px;">Overview</div>
-                            <div style="font-size: 11px; color: #333333; line-height: 1.6;">
+                            <div class="email-text" style="font-size: 11px; color: #333333; line-height: 1.6;">
                                 <span style="color:#1976d2; font-size: 10px;">&#9632;</span> Top private & public colleges (India & abroad) invited<br>
                                 <span style="color:#1976d2; font-size: 10px;">&#9632;</span> Each university rep gives a brief intro<br>
                                 <span style="color:#1976d2; font-size: 10px;">&#9632;</span> Students free to ask questions<br>
                                 <span style="color:#1976d2; font-size: 10px;">&#9632;</span> Student help desk with counsellors on-site
                             </div>
                         </td>
-                        <td width="4%"></td> <!-- Gutter -->
+                        <td width="4%"></td>
                         <td width="48%" valign="top">
                             <div style="color: #F47920; font-size: 13px; font-weight: bold; margin-bottom: 8px;">Requirements</div>
-                            <div style="font-size: 11px; color: #333333; line-height: 1.6;">
+                            <div class="email-text" style="font-size: 11px; color: #333333; line-height: 1.6;">
                                 1. Min. 2 hours on school/college premises<br>
                                 2. All students to visit university stalls<br>
                                 3. Preferred date & time from the institution<br>
@@ -302,15 +354,15 @@
                 <hr style="border: 0; border-top: 1px solid #F47920; margin-bottom: 20px;">
 
                 <div style="color: #F47920; font-size: 13px; font-weight: bold; margin-bottom: 8px;">Why UpSchol?</div>
-                <div style="font-size: 11px; color: #333333; line-height: 1.6;">
+                <div class="email-text" style="font-size: 11px; color: #333333; line-height: 1.6;">
                     <span style="color:#1976d2; font-size: 10px;">&#9632;</span> Exclusive connect with Domestic & International Universities<br>
                     <span style="color:#1976d2; font-size: 10px;">&#9632;</span> One-stop platform for all scholarship needs<br>
-                    <span style="color:#000000; font-size: 11px;">&#10003;</span> Specialized in organizing Career & Scholarships Fairs<br>
-                    <span style="color:#000000; font-size: 11px;">&#10003;</span> Free admission assistance, mentoring, study-abroad support, visa & scholarship guidance<br>
-                    <span style="color:#000000; font-size: 11px;">&#10003;</span> Free regular updates on domestic university forms (No hidden costs)
+                    <span class="email-text" style="color:#000000; font-size: 11px;">&#10003;</span> Specialized in organizing Career & Scholarships Fairs<br>
+                    <span class="email-text" style="color:#000000; font-size: 11px;">&#10003;</span> Free admission assistance, mentoring, study-abroad support, visa & scholarship guidance<br>
+                    <span class="email-text" style="color:#000000; font-size: 11px;">&#10003;</span> Free regular updates on domestic university forms (No hidden costs)
                 </div>
 
-                <div style="text-align: center; font-size: 11px; font-weight: bold; margin-top: 20px; color: #333333;">
+                <div class="email-text" style="text-align: center; font-size: 11px; font-weight: bold; margin-top: 20px; color: #333333;">
                     Contact: Akshay Sahni (Director) | 9810102541 | Please revert with preferred date & time to host the event.
                 </div>
                 
